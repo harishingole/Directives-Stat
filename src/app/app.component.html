@@ -30,8 +30,12 @@
           </li>
         </div>
         </ul>
-        <p appBasicDirectives>This is first basic Directives</p>
-        <p appBetterDirectives>This is first better Directives</p>
+        <p appBasicDirectives >This is first basic Directives</p>
+        <!-- we can bind property using sqaure bracket with single quotation mark AND appBetterDirectives is an alias for 
+        Input Decorator -->
+        <!-- <p [appBetterDirectives]="'green'" [defaultColor]="'yellow'">This is first better Directives</p> -->
+        <!-- remove the sqaure bracket & remove single quotation for only string still working fine -->
+        <p [appBetterDirectives]="'green'" defaultColor="yellow">This is first better Directives</p>
       <!-- <ng-template [ngIf]="onlyOdd">
         <p>Only odd</p>
       </ng-template> -->
