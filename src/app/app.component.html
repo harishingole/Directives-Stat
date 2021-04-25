@@ -5,21 +5,24 @@
         class="btn btn-primary"
         (click) = "onlyOdd = !onlyOdd">Only show odd numbers</button>
       <br><br>
-      
+      <div class="form-group">
         <ul class="list-group">
           <div *ngIf = "onlyOdd">
           <li
             class="list-group-item"
-            [ngClass] ="{odd: odd % 2 !== 0}"
-            [ngStyle] ="{backgroundColor: odd % 2 !== 0 ? 'yellow' : 'green'}"
+            [ngClass] = "{odd: oddNumbers % 2 !== 0}"
+            [ngStyle] = "{backgroundColor: odd % 2 !== 0 ? 'DodgerBlue' : 'MediumSeaGreen'}"
+            style="color: black;"
             *ngFor = "let odd of oddNumbers">
-            {{odd}}
+            {{odd }}
           </li>
         </div>
         </ul>
      
+      </div>
+        
       
-        <ul class="list-group">
+        <!-- <ul class="list-group">
           <div *ngIf = "!onlyOdd">
           <li
             class="list-group-item"
@@ -30,14 +33,44 @@
           </li>
         </div>
         </ul>
-        <p appBasicDirectives >This is first basic Directives</p>
-        <!-- we can bind property using sqaure bracket with single quotation mark AND appBetterDirectives is an alias for 
+        <div class="form-group">
+          <ng-template [ngIf]="!onlyOdd" class="form-group">
+            <li
+              class="list-group-item"
+              [ngClass]="{even: even % 2 == 0}"
+              [ngStyle]="{backgroundColor: even % 2 === 0 ? 'MediumSeaGreen' : 'DodgerBlue'}"
+              style="color: black;"
+              *ngFor = "let even of evenNumbers">
+              {{even}}
+            </li>
+          </ng-template> -->
+          
+          <div *appUnless = "onlyOdd">
+            <li
+              class="list-group-item"
+              [ngClass]="{even: even % 2 == 0}"
+              [ngStyle]="{backgroundColor: even % 2 === 0 ? 'green' : 'yellow'}"
+              *ngFor = "let even of evenNumbers"
+              style="color: black;">
+              {{even}}
+            </li>
+          </div>
+        
+      
+        
+        <div class="form-group">
+          <p appBasicDirectives >This is first basic Directives</p>
+        </div>
+        <div class="form-group">
+          <!-- we can bind property using sqaure bracket with single quotation mark AND appBetterDirectives is an alias for 
         Input Decorator -->
         <!-- <p [appBetterDirectives]="'green'" [defaultColor]="'yellow'">This is first better Directives</p> -->
         <!-- remove the sqaure bracket & remove single quotation for only string still working fine -->
-        <p [appBetterDirectives]="'green'" defaultColor="yellow">This is first better Directives</p>
-      <!-- <ng-template [ngIf]="onlyOdd">
-        <p>Only odd</p>
+        <p [appBetterDirectives]="'MediumSeaGreen'" defaultColor="DodgerBlue">This is first better Directives</p>
+        <!-- <ng-template [ngIf]="onlyOdd">
+          <p>Only odd</p>
+        </div>
+        
       </ng-template> -->
     </div>
   </div>
